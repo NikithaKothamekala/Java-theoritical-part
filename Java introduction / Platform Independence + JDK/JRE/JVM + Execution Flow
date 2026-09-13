@@ -1,0 +1,245 @@
+# ☕ Java Basics — JDK, JRE, JVM & Execution
+
+---
+
+## 1. What is Java?
+
+Java is a **high-level, object-oriented, class-based, platform-independent programming language** developed by **Sun Microsystems**.
+
+### ⭐ Key Features
+
+* High-level
+* Object-oriented
+* Class-based
+* Platform-independent
+* Robust
+* Secure
+* Multithreaded
+* Portable
+
+---
+
+# 2. Why is Java Platform Independent?
+
+Java source code is compiled into **platform-independent bytecode**.
+
+That bytecode can run on different operating systems as long as a compatible **JVM** is available.
+
+### 🔥 WORA
+
+> **Write Once, Run Anywhere**
+
+```text
+Java Source Code
+      ↓
+   Compiler
+      ↓
+   Bytecode
+      ↓
+ ┌────┼────┐
+ ↓    ↓    ↓
+JVM  JVM  JVM
+Win  Linux macOS
+```
+
+### Important
+
+* **Bytecode** → Platform-independent
+* **JVM** → Platform-dependent
+
+---
+
+# 3. JDK
+
+## Java Development Kit
+
+JDK provides the tools required to **develop Java applications**.
+
+It includes:
+
+* Java compiler (`javac`)
+* JRE
+* Debugging and development tools
+* Other Java utilities
+
+### Memory Trick
+
+> **JDK = Develop**
+
+---
+
+# 4. JRE
+
+## Java Runtime Environment
+
+JRE provides the environment required to **run Java applications**.
+
+It contains:
+
+* JVM
+* Required runtime libraries
+
+### Memory Trick
+
+> **JRE = Run**
+
+---
+
+# 5. JVM
+
+## Java Virtual Machine
+
+JVM is responsible for **executing Java bytecode**.
+
+⚠️ Important:
+
+**JVM does NOT convert `.java` source code into bytecode.**
+
+The compiler does that.
+
+### Memory Trick
+
+> **JVM = Execute**
+
+---
+
+# 6. JDK vs JRE vs JVM
+
+| Component | Main Purpose                      |
+| --------- | --------------------------------- |
+| **JDK**   | Develop and compile Java programs |
+| **JRE**   | Run Java programs                 |
+| **JVM**   | Execute bytecode                  |
+
+### Hierarchy
+
+```text
+JDK
+ └── JRE
+      └── JVM
+```
+
+---
+
+# 7. Java Execution Flow
+
+Suppose we have:
+
+```java
+class Hello {
+    public static void main(String[] args) {
+        System.out.println("Hello");
+    }
+}
+```
+
+File:
+
+```text
+Hello.java
+```
+
+### Step 1 — Compilation
+
+```text
+Hello.java
+    ↓
+  javac
+    ↓
+Hello.class
+```
+
+The `.class` file contains **bytecode**.
+
+### Step 2 — Execution
+
+```text
+Hello.class
+    ↓
+   JVM
+    ↓
+Execution
+```
+
+### Complete Flow
+
+```text
+.java
+  ↓
+javac
+  ↓
+.class
+(Bytecode)
+  ↓
+JVM
+  ↓
+Execution
+```
+
+---
+
+# 🎯 Interview Questions
+
+### Q1. What is Java?
+
+Java is a high-level, object-oriented, class-based and platform-independent programming language.
+
+### Q2. Why is Java platform-independent?
+
+Because Java source code is compiled into platform-independent bytecode that can run on any OS having a compatible JVM.
+
+### Q3. What is JDK?
+
+JDK is a development kit containing tools required to develop and compile Java applications.
+
+### Q4. What is JRE?
+
+JRE provides the environment required to run Java applications.
+
+### Q5. What is JVM?
+
+JVM executes Java bytecode.
+
+### Q6. Who converts `.java` into `.class`?
+
+**`javac` — Java compiler.**
+
+### Q7. Who executes `.class` bytecode?
+
+**JVM.**
+
+---
+
+# ⚠️ Common Interview Trap
+
+❌ Wrong:
+
+> JVM converts source code into bytecode.
+
+✅ Correct:
+
+> `javac` converts source code into bytecode, and JVM executes the bytecode.
+
+---
+
+# 🧠 One-Line Revision
+
+```text
+JDK → Develop
+JRE → Run
+JVM → Execute
+
+.java → javac → .class → JVM → Execution
+```
+
+---
+
+## 🔥 Interview Tip
+
+If an interviewer asks:
+
+**"Why is Java platform-independent but JVM is platform-dependent?"**
+
+Remember:
+
+> **Java bytecode is the same across platforms, but each platform requires its own JVM implementation to execute that bytecode.**
