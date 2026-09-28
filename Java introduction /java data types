@@ -1,0 +1,263 @@
+# ☕ Java Data Types — Interview Notes
+
+## 1. Types of Data Types
+
+Java data types are divided into **2 categories**:
+
+```text
+Data Types
+├── Primitive
+└── Non-Primitive / Reference
+```
+
+### Primitive — 8 types
+
+```text
+byte
+short
+int
+long
+float
+double
+char
+boolean
+```
+
+### Reference Types
+
+Examples:
+
+```text
+String
+Arrays
+Classes
+Interfaces
+Objects
+```
+
+⚠️ `String` is **not** a primitive type.
+
+---
+
+## 2. Primitive Data Types
+
+| Type      |          Size | Main Use              |
+| --------- | ------------: | --------------------- |
+| `byte`    |        1 byte | Small integers        |
+| `short`   |       2 bytes | Small integers        |
+| `int`     |       4 bytes | General integers      |
+| `long`    |       8 bytes | Large integers        |
+| `float`   |       4 bytes | Decimal values        |
+| `double`  |       8 bytes | More precise decimals |
+| `char`    |       2 bytes | Single character      |
+| `boolean` | JVM-dependent | `true` / `false`      |
+
+### Integer types
+
+```java
+byte a = 10;
+short b = 100;
+int c = 1000;
+long d = 10000L;
+```
+
+### Floating-point types
+
+```java
+float x = 10.5f;
+double y = 10.5;
+```
+
+`double` is the default type for decimal literals.
+
+---
+
+# 3. `int` vs `Integer`
+
+### `int`
+
+Primitive data type:
+
+```java
+int age = 21;
+```
+
+### `Integer`
+
+Wrapper class:
+
+```java
+Integer age = 21;
+```
+
+### Key Difference
+
+```text
+int     → primitive
+Integer → wrapper class
+```
+
+`Integer` can hold `null`, while `int` cannot.
+
+```java
+Integer a = null;  // ✅
+int b = null;      // ❌
+```
+
+---
+
+# 4. Autoboxing
+
+Automatic conversion:
+
+```text
+primitive → wrapper object
+```
+
+Example:
+
+```java
+int a = 10;
+Integer b = a;
+```
+
+Java automatically converts `int` to `Integer`.
+
+---
+
+# 5. Unboxing
+
+Automatic conversion:
+
+```text
+wrapper object → primitive
+```
+
+Example:
+
+```java
+Integer a = 10;
+int b = a;
+```
+
+---
+
+# 6. `float` vs `double`
+
+|                 | `float`           | `double` |
+| --------------- | ----------------- | -------- |
+| Size            | 4 bytes           | 8 bytes  |
+| Precision       | Lower             | Higher   |
+| Decimal literal | Usually needs `f` | Default  |
+
+Example:
+
+```java
+float a = 10.5f;
+double b = 10.5;
+```
+
+⚠️ Without `f`:
+
+```java
+float a = 10.5;  // ❌
+```
+
+because `10.5` is a `double` literal by default.
+
+---
+
+# 7. `==` vs `.equals()`
+
+### `==`
+
+* Primitive → compares values
+* Object → compares references
+
+### `.equals()`
+
+* Used for logical/content equality of objects, according to the class's `equals()` implementation.
+
+Example:
+
+```java
+int a = 10;
+int b = 10;
+
+System.out.println(a == b);  // true
+```
+
+Object example:
+
+```java
+String s1 = new String("Hello");
+String s2 = new String("Hello");
+
+System.out.println(s1 == s2);       // false
+System.out.println(s1.equals(s2));  // true
+```
+
+### Memory Trick
+
+```text
+==         → value / reference
+.equals()  → logical/content equality
+```
+
+---
+
+# 🎯 Most Important Interview Questions
+
+### 1. How many primitive data types are there?
+
+**8**
+
+### 2. Is String primitive?
+
+**No. String is a reference type/class.**
+
+### 3. Difference between `int` and `Integer`?
+
+`int` is primitive; `Integer` is its wrapper class.
+
+### 4. What is autoboxing?
+
+Automatic conversion from primitive to wrapper object.
+
+### 5. What is unboxing?
+
+Automatic conversion from wrapper object to primitive.
+
+### 6. Difference between float and double?
+
+`float` uses 4 bytes and has lower precision; `double` uses 8 bytes and has higher precision.
+
+### 7. Difference between `==` and `.equals()`?
+
+`==` compares primitive values or object references; `.equals()` compares logical/content equality of objects.
+
+---
+
+# 🔥 Quick Revision
+
+```text
+Java Data Types
+      ↓
+Primitive + Reference
+
+Primitive = 8
+byte, short, int, long,
+float, double, char, boolean
+
+int → primitive
+Integer → wrapper
+
+primitive → wrapper = Autoboxing
+wrapper → primitive = Unboxing
+
+float → 4 bytes
+double → 8 bytes
+
+== → primitive value / object reference
+.equals() → object logical/content equality
+```
