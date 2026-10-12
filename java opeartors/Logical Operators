@@ -1,0 +1,467 @@
+
+# ☕ JAVA OPERATORS — 04: LOGICAL OPERATORS
+### 🌈 Complete Interview Preparation Notes | Beginner to Interview Level
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 🔷 1. 📌 WHAT ARE LOGICAL OPERATORS?
+
+**Definition:**
+
+Logical operators are used to combine conditions or reverse a boolean condition. They return a boolean result: `true` or `false`.
+
+**Real-life example:**
+
+Suppose you can enter a movie if:
+- Your age is at least 18.
+- You have a ticket.
+
+Both conditions must be true.
+
+Java can check both conditions using the logical AND operator (`&&`).
+
+### 💻 Example
+```java
+int age = 20;
+boolean hasTicket = true;
+
+System.out.println(age >= 18 && hasTicket);
+```
+
+### ✅ Output
+```text
+true
+```
+
+**Explanation:**
+- `age >= 18` → `true`
+- `hasTicket` → `true`
+- `true && true` → `true`
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 🔷 2. 📚 TYPES OF LOGICAL OPERATORS
+
+Java has three main logical operators:
+
+| Operator | Name | Purpose |
+|:---:|---|---|
+| `&&` | Logical AND | True only when both conditions are true |
+| `||` | Logical OR | True when at least one condition is true |
+| `!` | Logical NOT | Reverses a boolean value |
+
+🧠 **MEMORY TRICK:**
+
+- `&&` → Both
+- `||` → At least one
+- `!` → Reverse
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 🔷 3. 🟢 LOGICAL AND (`&&`)
+
+### 📌 Definition
+Logical AND returns `true` only when **both conditions are true**.
+
+### 📊 Truth Table
+
+| Condition A | Condition B | A `&&` B |
+|---|---|---|
+| `true` | `true` | `true` |
+| `true` | `false` | `false` |
+| `false` | `true` | `false` |
+| `false` | `false` | `false` |
+
+### 💻 Example
+```java
+int age = 22;
+
+System.out.println(age >= 18 && age <= 60);
+System.out.println(age >= 18 && age < 18);
+```
+
+### ✅ Output
+```text
+true
+false
+```
+
+### 🔍 Dry Run
+**First condition:**
+- `22 >= 18` → `true`
+- `22 <= 60` → `true`
+- `true && true` → `true`
+
+**Second condition:**
+- `22 >= 18` → `true`
+- `22 < 18` → `false`
+- `true && false` → `false`
+
+### ⚡ Important: Short-circuit AND
+
+With `&&`, Java skips the second operand when the first operand is `false`.
+
+```java
+int a = 5;
+
+System.out.println(a > 10 && ++a > 5);
+System.out.println(a);
+```
+
+**Output:**
+```text
+false
+5
+```
+
+**Why?**
+- `a > 10` → `false`
+- Java skips `++a > 5`.
+- Therefore, `a` remains `5`.
+
+🧠 **MEMORY TRICK:** AND needs both conditions to be true. With `&&`, a false first condition is enough to determine the result.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 🔷 4. 🔵 LOGICAL OR (`||`)
+
+### 📌 Definition
+Logical OR returns `true` when **at least one condition is true**. It returns `false` only when both conditions are false.
+
+### 📊 Truth Table
+
+| Condition A | Condition B | A `||` B |
+|---|---|---|
+| `true` | `true` | `true` |
+| `true` | `false` | `true` |
+| `false` | `true` | `true` |
+| `false` | `false` | `false` |
+
+### 💻 Example
+```java
+int age = 16;
+
+System.out.println(age < 18 || age > 60);
+System.out.println(age >= 18 || age <= 10);
+```
+
+### ✅ Output
+```text
+true
+false
+```
+
+### 🔍 Dry Run
+**First condition:**
+- `16 < 18` → `true`
+- Java already knows the overall result is true.
+- `true || anything` → `true`
+
+**Second condition:**
+- `16 >= 18` → `false`
+- `16 <= 10` → `false`
+- `false || false` → `false`
+
+### ⚡ Important: Short-circuit OR
+
+With `||`, Java skips the second operand when the first operand is `true`.
+
+```java
+int a = 5;
+
+System.out.println(a == 5 || ++a > 5);
+System.out.println(a);
+```
+
+**Output:**
+```text
+true
+5
+```
+
+**Why?**
+- `a == 5` → `true`
+- Java skips `++a > 5`.
+- Therefore, `a` remains `5`.
+
+🧠 **MEMORY TRICK:** OR needs at least one true condition. With `||`, a true first condition is enough to determine the result.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 🔷 5. 🟠 LOGICAL NOT (`!`)
+
+### 📌 Definition
+Logical NOT reverses a boolean value.
+
+### 📊 Truth Table
+
+| Condition | `!Condition` |
+|---|---|
+| `true` | `false` |
+| `false` | `true` |
+
+### 💻 Example
+```java
+boolean isRaining = false;
+
+System.out.println(!isRaining);
+System.out.println(!!isRaining);
+```
+
+### ✅ Output
+```text
+true
+false
+```
+
+### 🔍 Dry Run
+- `!false` → `true`
+- `!!false` → `!true` → `false`
+
+### 💻 Example: Reverse a comparison
+```java
+int age = 16;
+
+System.out.println(age >= 18);
+System.out.println(!(age >= 18));
+```
+
+**Output:**
+```text
+false
+true
+```
+
+🧠 **MEMORY TRICK:** One `!` reverses the result. Two `!!` operators return the original boolean value.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 🔷 6. ⚖️ DIFFERENCE BETWEEN `&&` AND `&`
+
+Both can perform AND operations, but they behave differently.
+
+### Logical AND (`&&`)
+- Works with boolean operands.
+- Uses short-circuit evaluation.
+- Skips the second operand if the first is `false`.
+
+### Boolean AND (`&`)
+- Can operate on boolean operands.
+- Evaluates both boolean operands.
+- When used with integers, performs bitwise AND.
+
+### 💻 Example
+```java
+int a = 5;
+System.out.println(a > 10 && ++a > 5);
+System.out.println(a);
+```
+
+**Output:**
+```text
+false
+5
+```
+
+Compare with:
+
+```java
+int b = 5;
+System.out.println(b > 10 & ++b > 5);
+System.out.println(b);
+```
+
+**Output:**
+```text
+false
+6
+```
+
+**Why?**
+- `&&` skips the second condition because the first is false.
+- Boolean `&` evaluates both conditions, so `++b` executes.
+
+**Important:** `&` is not exclusively a logical operator. With integer operands, it is a bitwise operator.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 🔷 7. ⚖️ DIFFERENCE BETWEEN `||` AND `|`
+
+### Logical OR (`||`)
+- Works with boolean operands.
+- Uses short-circuit evaluation.
+- Skips the second operand if the first is `true`.
+
+### Boolean OR (`|`)
+- Evaluates both boolean operands.
+- With integer operands, performs bitwise OR.
+
+### 💻 Example
+```java
+int a = 5;
+
+System.out.println(a == 5 || ++a > 5);
+System.out.println(a);
+```
+
+**Output:**
+```text
+true
+5
+```
+
+Compare with:
+
+```java
+int b = 5;
+
+System.out.println(b == 5 | ++b > 5);
+System.out.println(b);
+```
+
+**Output:**
+```text
+true
+6
+```
+
+**Why?**
+- `||` skips the second condition because the first is true.
+- Boolean `|` evaluates both operands, so `++b` executes.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 🔷 8. ⚠️ COMMON INTERVIEW MISTAKES
+
+❌ **Mistake 1:** Thinking `&&` returns true if either condition is true.
+
+✅ Correct: Both conditions must be true.
+
+❌ **Mistake 2:** Thinking `||` requires both conditions to be true.
+
+✅ Correct: At least one condition must be true.
+
+❌ **Mistake 3:** Thinking `!` means not equal.
+
+✅ Correct: `!` reverses a boolean. `!=` compares two values for inequality.
+
+❌ **Mistake 4:** Thinking the second condition always executes.
+
+✅ Correct: `&&` and `||` use short-circuit evaluation.
+
+❌ **Mistake 5:** Thinking `&` and `&&` are always interchangeable.
+
+✅ Correct: `&&` short-circuits; boolean `&` evaluates both operands.
+
+❌ **Mistake 6:** Using `||` when both conditions must be satisfied.
+
+✅ Correct: Use `&&` when both conditions must be true.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 🔷 9. 🎤 INTERVIEW QUESTIONS & ANSWERS
+
+**Q1. What are logical operators?**
+
+They combine or reverse boolean conditions.
+
+**Q2. What is the difference between `&&` and `||`?**
+
+`&&` requires both conditions to be true. `||` requires at least one condition to be true.
+
+**Q3. What does `!` do?**
+
+It reverses a boolean value.
+
+**Q4. What is short-circuit evaluation?**
+
+Java stops evaluating the expression when the result is already determined.
+
+**Q5. When does `&&` skip the second operand?**
+
+When the first operand is `false`.
+
+**Q6. When does `||` skip the second operand?**
+
+When the first operand is `true`.
+
+**Q7. What is the difference between `&` and `&&`?**
+
+For boolean operands, `&` evaluates both operands, while `&&` can skip the second operand.
+
+**Q8. What is the difference between `|` and `||`?**
+
+For boolean operands, `|` evaluates both operands, while `||` can skip the second operand.
+
+**Q9. What is the output of `!true`?**
+
+`false`.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 🔷 10. 🧪 PRACTICE PROGRAM
+
+```java
+public class LogicalOperatorsPractice {
+    public static void main(String[] args) {
+        int age = 22;
+        boolean hasTicket = true;
+
+        System.out.println(age >= 18 && hasTicket);
+        System.out.println(age < 18 || age > 60);
+        System.out.println(!hasTicket);
+    }
+}
+```
+
+### ✅ Output
+```text
+true
+false
+false
+```
+
+### 🔍 Explanation
+- `age >= 18 && hasTicket` → `true && true` → `true`
+- `age < 18 || age > 60` → `false || false` → `false`
+- `!hasTicket` → `!true` → `false`
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 🔷 11. 🧠 QUICK REVISION
+
+| Operator | Remember |
+|---|---|
+| `&&` | Both must be true |
+| `||` | At least one must be true |
+| `!` | Reverses true/false |
+| `&` | Boolean AND without short-circuiting; bitwise AND for integers |
+| `|` | Boolean OR without short-circuiting; bitwise OR for integers |
+
+**Final memory trick:**
+
+- AND → Both
+- OR → At least one
+- NOT → Reverse
+- `&&` → Short-circuit AND
+- `||` → Short-circuit OR
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 🏆 TOPIC STATUS
+
+**JAVA OPERATORS — 04: LOGICAL OPERATORS**
+
+✅ Definition and types  
+✅ Truth tables  
+✅ Examples and dry runs  
+✅ Short-circuit evaluation  
+✅ `&&` vs `&`  
+✅ `||` vs `|`  
+✅ Common mistakes  
+✅ Interview questions and answers  
+✅ Practice program  
+
+📌 **TOPIC COMPLETED — ADD TO GITHUB NOTES**
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
