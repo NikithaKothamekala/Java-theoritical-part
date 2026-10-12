@@ -1,0 +1,531 @@
+
+# 🚀 JAVA OPERATORS — 06: TERNARY OPERATOR (?:)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 📌 1. What Is the Ternary Operator?
+
+The **ternary operator (`?:`)** is a conditional operator in Java. It checks a condition and selects one of two expressions based on whether the condition is `true` or `false`.
+
+💡 It is commonly used as a shorter alternative to a simple `if-else` statement.
+
+### ✅ Example
+
+```java
+int age = 20;
+
+String result = (age >= 18) ? "Eligible" : "Not Eligible";
+
+System.out.println(result);
+```
+
+**Output:**
+```text
+Eligible
+```
+
+🧠 Explanation:
+- `age >= 18` → condition
+- `?` → separates the condition from the true expression
+- `"Eligible"` → selected when the condition is `true`
+- `:` → separates the true expression from the false expression
+- `"Not Eligible"` → selected when the condition is `false`
+
+Since `age` is 20, the condition is `true`, so `"Eligible"` is selected.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 📌 2. Syntax of the Ternary Operator
+
+```java
+condition ? expressionIfTrue : expressionIfFalse;
+```
+
+### 🔍 How to Remember It
+
+- **Condition** → What are we checking?
+- **`?`** → What if the condition is true?
+- **`:`** → What if the condition is false?
+
+🧠 Memory trick:
+
+**Condition → True choice → False choice**
+
+The ternary operator is called *ternary* because it uses three operands:
+1. A condition
+2. An expression for the true case
+3. An expression for the false case
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 📌 3. Example: Checking Pass or Fail
+
+```java
+int marks = 75;
+
+String result = (marks >= 35) ? "Pass" : "Fail";
+
+System.out.println(result);
+```
+
+**Output:**
+```text
+Pass
+```
+
+### 🧠 Dry Run
+
+| Step | Operation | Result |
+|---|---|---|
+| 1 | `marks = 75` | 75 |
+| 2 | `marks >= 35` | `true` |
+| 3 | Select the true expression | `"Pass"` |
+| 4 | Store in `result` | `"Pass"` |
+
+Because 75 is greater than or equal to 35, the result is `"Pass"`.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 📌 4. Example: Checking an Even or Odd Number
+
+```java
+int number = 7;
+
+String result = (number % 2 == 0) ? "Even" : "Odd";
+
+System.out.println(result);
+```
+
+**Output:**
+```text
+Odd
+```
+
+### Explanation
+
+- `7 % 2` gives `1`.
+- `1 == 0` is `false`.
+- Therefore, the false expression `"Odd"` is selected.
+
+### Try Another Value
+
+If `number = 8`:
+
+- `8 % 2` gives `0`.
+- `0 == 0` is `true`.
+- The output becomes `Even`.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 📌 5. Ternary Operator vs if-else
+
+Both can make decisions, but their syntax is different.
+
+### Using if-else
+
+```java
+int a = 10;
+int b = 20;
+int max;
+
+if (a > b) {
+    max = a;
+} else {
+    max = b;
+}
+
+System.out.println(max);
+```
+
+**Output:**
+```text
+20
+```
+
+### Using the Ternary Operator
+
+```java
+int a = 10;
+int b = 20;
+
+int max = (a > b) ? a : b;
+
+System.out.println(max);
+```
+
+**Output:**
+```text
+20
+```
+
+### Difference Table
+
+| Ternary Operator | if-else |
+|---|---|
+| Uses `?:` | Uses `if` and `else` |
+| Usually shorter for simple choices | Better for complex decisions |
+| Produces a selected expression value | Can execute statements in separate blocks |
+| Useful for simple assignments and returns | Useful for multiple statements and complex logic |
+
+⚠️ Important: Do not use deeply nested ternary operators when they make the code difficult to understand.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 📌 6. Example: Finding the Largest of Two Numbers
+
+```java
+int a = 45;
+int b = 30;
+
+int largest = (a > b) ? a : b;
+
+System.out.println("Largest = " + largest);
+```
+
+**Output:**
+```text
+Largest = 45
+```
+
+Explanation:
+- `45 > 30` is `true`.
+- Therefore, `a` is selected.
+- `largest` becomes `45`.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 📌 7. Example: Finding the Largest of Three Numbers
+
+A ternary operator can be nested inside another ternary operator.
+
+```java
+int a = 10;
+int b = 25;
+int c = 15;
+
+int largest = (a > b)
+        ? ((a > c) ? a : c)
+        : ((b > c) ? b : c);
+
+System.out.println(largest);
+```
+
+**Output:**
+```text
+25
+```
+
+### 🧠 Dry Run
+
+1. Check `a > b` → `10 > 25` → `false`.
+2. Select the false expression: `(b > c) ? b : c`.
+3. Check `b > c` → `25 > 15` → `true`.
+4. Select `b`, which is `25`.
+
+Therefore, `largest = 25`.
+
+⚠️ Nested ternary expressions can be confusing. For complex conditions, prefer `if-else` for readability.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 📌 8. Example: Checking Positive, Negative, or Zero
+
+```java
+int number = -5;
+
+String result = (number > 0)
+        ? "Positive"
+        : (number < 0 ? "Negative" : "Zero");
+
+System.out.println(result);
+```
+
+**Output:**
+```text
+Negative
+```
+
+### Explanation
+
+- First, `number > 0` is `false`.
+- Java evaluates the nested ternary expression.
+- `number < 0` is `true`.
+- Therefore, `"Negative"` is selected.
+
+This is an example of a **nested ternary operator**.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 📌 9. Example: Assigning a Discount
+
+```java
+int purchaseAmount = 1500;
+
+int discount = (purchaseAmount >= 1000) ? 200 : 0;
+
+System.out.println("Discount = " + discount);
+```
+
+**Output:**
+```text
+Discount = 200
+```
+
+🌍 Real-life example:
+
+A shop offers a discount of ₹200 when the purchase amount is at least ₹1,000. Otherwise, there is no discount.
+
+The ternary operator selects the correct discount amount.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 📌 10. Data Types and the Ternary Operator
+
+The two expressions should have types that Java can combine into a valid result type.
+
+### Example 1: Both Expressions Are Integers
+
+```java
+int a = 10;
+
+int result = (a > 5) ? 100 : 200;
+
+System.out.println(result);
+```
+
+**Output:**
+```text
+100
+```
+
+### Example 2: Both Expressions Are Strings
+
+```java
+boolean status = true;
+
+String result = status ? "Active" : "Inactive";
+
+System.out.println(result);
+```
+
+**Output:**
+```text
+Active
+```
+
+### Example 3: Different Numeric Types
+
+```java
+boolean status = true;
+
+double result = status ? 10 : 5.5;
+
+System.out.println(result);
+```
+
+**Output:**
+```text
+10.0
+```
+
+Explanation:
+- The selected expression is the integer `10`.
+- The result is assigned to a `double`.
+- Java represents it as `10.0`.
+
+⚠️ Ternary type rules can be more complex when expressions use different types. Make sure the selected expression's resulting type is compatible with the variable receiving it.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 📌 11. Important Rules
+
+✅ The condition must be a boolean expression.
+
+✅ The `?` symbol separates the condition from the true expression.
+
+✅ The `:` symbol separates the true and false expressions.
+
+✅ Only the selected expression is evaluated.
+
+✅ The ternary operator returns a value, so it is often useful in assignments and `return` statements.
+
+❌ Do not confuse the ternary operator `?:` with the equality operator `==`.
+
+### Invalid Example
+
+```java
+int a = 10;
+
+String result = (a > 5) ? "Yes";
+```
+
+**Result:** Compilation error.
+
+Why? The ternary operator requires both a true expression and a false expression, separated by `:`.
+
+### Correct Example
+
+```java
+int a = 10;
+
+String result = (a > 5) ? "Yes" : "No";
+
+System.out.println(result);
+```
+
+**Output:**
+```text
+Yes
+```
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 📌 12. Common Mistakes to Avoid ⚠️
+
+❌ **Mistake 1: Forgetting the colon**
+
+```java
+int result = (5 > 3) ? 10;
+```
+
+This causes a compilation error.
+
+✅ Correct:
+
+```java
+int result = (5 > 3) ? 10 : 20;
+```
+
+❌ **Mistake 2: Using a non-boolean condition**
+
+```java
+int result = (10) ? 1 : 2;
+```
+
+This causes a compilation error because `10` is an integer, not a boolean condition.
+
+✅ Correct:
+
+```java
+int result = (10 > 5) ? 1 : 2;
+```
+
+❌ **Mistake 3: Choosing the wrong branch**
+
+```java
+int age = 16;
+
+String result = (age >= 18) ? "Adult" : "Minor";
+
+System.out.println(result);
+```
+
+**Output:**
+```text
+Minor
+```
+
+Remember: `?` is followed by the true choice; `:` is followed by the false choice.
+
+❌ **Mistake 4: Using nested ternaries unnecessarily**
+
+Too many nested conditions can make code hard to read. Use `if-else` when it improves clarity.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 📌 13. Interview Questions and Answers
+
+**Q1. What is the ternary operator in Java?**
+
+It is a conditional operator that selects one of two expressions depending on whether a condition is true or false.
+
+**Q2. Why is it called the ternary operator?**
+
+Because it uses three operands: a condition, a true expression, and a false expression.
+
+**Q3. What is its syntax?**
+
+```java
+condition ? expressionIfTrue : expressionIfFalse;
+```
+
+**Q4. What is the output?**
+
+```java
+int a = 5;
+
+int result = (a > 10) ? 100 : 200;
+
+System.out.println(result);
+```
+
+**Answer:**
+```text
+200
+```
+
+Explanation: `5 > 10` is `false`, so `200` is selected.
+
+**Q5. Can ternary operators be nested?**
+
+Yes. A ternary expression can be used inside another ternary expression.
+
+**Q6. Can we use a ternary operator instead of every if-else statement?**
+
+No. It is best for simple decisions that select a value. Complex logic is usually clearer with `if-else`.
+
+**Q7. Are both expressions evaluated?**
+
+No. Java evaluates the condition and then evaluates only the selected expression.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 🧠 14. Quick Memory Trick
+
+Remember:
+
+`condition ? TRUE : FALSE`
+
+- Condition is `true` → choose the expression after `?`.
+- Condition is `false` → choose the expression after `:`.
+- The chosen expression provides the result.
+
+Example:
+
+```java
+int result = (8 > 5) ? 1 : 0;
+```
+
+Since `8 > 5` is true, the result is `1`.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## ⚡ 15. Quick Revision
+
+✅ Operator: `?:`
+
+✅ Type: Conditional operator
+
+✅ Purpose: Select one of two expressions
+
+✅ True branch: After `?`
+
+✅ False branch: After `:`
+
+✅ Supports nesting
+
+✅ Useful for simple conditional assignments
+
+✅ Use `if-else` for complex decisions or multiple statements
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 🏆 TOPIC COMPLETED — ADD TO GITHUB NOTES
+
+**Topic:** Java Operators — 06: Ternary Operator (`?:`)
+
+**Status:** COMPLETED ✅
+
+**Next topic:** Java Operators — 07: Bitwise Operators (`&`, `|`, `^`, `~`), with binary calculations, truth tables, dry runs, and interview questions.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
