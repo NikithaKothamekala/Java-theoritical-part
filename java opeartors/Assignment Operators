@@ -1,0 +1,638 @@
+
+# 🚀 JAVA OPERATORS — 05: ASSIGNMENT OPERATORS
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 📌 1. What Are Assignment Operators?
+
+Assignment operators are used to **assign a value to a variable** or **update the value of an existing variable**.
+
+👉 The simplest assignment operator is `=`.
+
+### ✅ Example
+
+```java
+int a = 10;
+System.out.println(a);
+```
+
+**Output:**
+```text
+10
+```
+
+🧠 Explanation:
+- `int` → data type
+- `a` → variable name
+- `=` → assignment operator
+- `10` → value assigned to the variable
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 📌 2. Types of Assignment Operators
+
+Java provides these commonly used assignment operators:
+
+| Operator | Meaning | Example | Equivalent Expression |
+|---|---|---|---|
+| `=` | Assign | `a = 10` | Assign 10 to `a` |
+| `+=` | Add and assign | `a += 5` | `a = a + 5` |
+| `-=` | Subtract and assign | `a -= 5` | `a = a - 5` |
+| `*=` | Multiply and assign | `a *= 5` | `a = a * 5` |
+| `/=` | Divide and assign | `a /= 5` | `a = a / 5` |
+| `%=` | Remainder and assign | `a %= 5` | `a = a % 5` |
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 🔹 3. Simple Assignment Operator (=)
+
+The `=` operator assigns a value to a variable.
+
+### Example 1
+
+```java
+int age = 21;
+System.out.println(age);
+```
+
+**Output:**
+```text
+21
+```
+
+### Example 2: Updating a value
+
+```java
+int a = 10;
+a = 20;
+
+System.out.println(a);
+```
+
+**Output:**
+```text
+20
+```
+
+🧠 Dry run:
+
+| Statement | Value of `a` |
+|---|---:|
+| `int a = 10;` | 10 |
+| `a = 20;` | 20 |
+| `System.out.println(a);` | Prints 20 |
+
+⚠️ Important: `=` means assignment, not equality comparison. To compare two values, use `==`.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 🔹 4. Addition Assignment (+=)
+
+The `+=` operator adds a value to the existing variable and stores the result.
+
+### Syntax
+
+```java
+variable += value;
+```
+
+This is commonly equivalent to:
+
+```java
+variable = variable + value;
+```
+
+### Example
+
+```java
+int a = 10;
+a += 5;
+
+System.out.println(a);
+```
+
+**Output:**
+```text
+15
+```
+
+🧠 Dry run:
+
+- Initial value: `a = 10`
+- Operation: `a += 5`
+- Calculation: `10 + 5 = 15`
+- Final value: `a = 15`
+
+### Another example
+
+```java
+int marks = 70;
+marks += 10;
+marks += 5;
+
+System.out.println(marks);
+```
+
+**Output:**
+```text
+85
+```
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 🔹 5. Subtraction Assignment (-=)
+
+The `-=` operator subtracts a value from the existing variable and stores the result.
+
+### Example
+
+```java
+int balance = 100;
+balance -= 30;
+
+System.out.println(balance);
+```
+
+**Output:**
+```text
+70
+```
+
+🧠 Dry run:
+
+`balance = 100 - 30 = 70`
+
+### Example 2
+
+```java
+int a = 20;
+a -= 5;
+a -= 3;
+
+System.out.println(a);
+```
+
+**Output:**
+```text
+12
+```
+
+Explanation:
+
+- Initial value = 20
+- After `a -= 5`, value = 15
+- After `a -= 3`, value = 12
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 🔹 6. Multiplication Assignment (*=)
+
+The `*=` operator multiplies the existing value by another value and stores the result.
+
+### Example
+
+```java
+int a = 5;
+a *= 4;
+
+System.out.println(a);
+```
+
+**Output:**
+```text
+20
+```
+
+Calculation: `5 × 4 = 20`
+
+### Example 2
+
+```java
+int price = 100;
+price *= 2;
+price *= 3;
+
+System.out.println(price);
+```
+
+**Output:**
+```text
+600
+```
+
+🧠 Dry run:
+
+- Initial value = 100
+- After `price *= 2`, value = 200
+- After `price *= 3`, value = 600
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 🔹 7. Division Assignment (/=)
+
+The `/=` operator divides the existing value by another value and stores the result.
+
+### Example 1: Integer division
+
+```java
+int a = 10;
+a /= 3;
+
+System.out.println(a);
+```
+
+**Output:**
+```text
+3
+```
+
+🧠 Why not 3.33?
+
+Because `a` is an `int`. Integer division discards the fractional part, so the result is `3`.
+
+### Example 2: Exact division
+
+```java
+int a = 20;
+a /= 4;
+
+System.out.println(a);
+```
+
+**Output:**
+```text
+5
+```
+
+### Example 3: Floating-point division
+
+```java
+double a = 10.0;
+a /= 4;
+
+System.out.println(a);
+```
+
+**Output:**
+```text
+2.5
+```
+
+⚠️ Remember:
+- `int` division: fractional part is discarded.
+- `double` division: fractional part can be retained.
+- Dividing an integer by zero throws `ArithmeticException`.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 🔹 8. Remainder Assignment (%=)
+
+The `%=` operator calculates the remainder and stores it in the variable.
+
+### Example 1
+
+```java
+int a = 17;
+a %= 5;
+
+System.out.println(a);
+```
+
+**Output:**
+```text
+2
+```
+
+Explanation:
+
+`17 ÷ 5 = 3` remainder `2`.
+
+Therefore, `a = 2`.
+
+### Example 2
+
+```java
+int a = 20;
+a %= 4;
+
+System.out.println(a);
+```
+
+**Output:**
+```text
+0
+```
+
+Explanation: 20 is exactly divisible by 4, so the remainder is 0.
+
+### Example 3: Checking an even number
+
+```java
+int number = 14;
+number %= 2;
+
+System.out.println(number);
+```
+
+**Output:**
+```text
+0
+```
+
+🧠 Real-life use:
+- `% 2 == 0` → the original number is even.
+- `% 2 != 0` → the original number is odd.
+
+Note: The code above stores the remainder in `number`. If you need to keep the original number, use a separate expression or variable.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 📌 9. Important Interview Concept: Compound Assignment and Data Types
+
+This is a very important Java interview question!
+
+### Example 1: Using +=
+
+```java
+int a = 5;
+a += 2.5;
+
+System.out.println(a);
+```
+
+**Output:**
+```text
+7
+```
+
+Why?
+
+Compound assignment includes an implicit conversion back to the variable's type. For this example, it behaves like:
+
+```java
+a = (int) (a + 2.5);
+```
+
+Calculation:
+
+- `5 + 2.5 = 7.5`
+- Convert `7.5` to `int` → `7`
+- Final value = `7`
+
+### Example 2: Using normal addition
+
+```java
+int a = 5;
+a = a + 2.5;
+
+System.out.println(a);
+```
+
+**Output:**
+```text
+Compilation error
+```
+
+Why?
+
+- `a + 2.5` produces a `double` result.
+- Java does not automatically assign that `double` result to an `int` using ordinary `=`.
+- An explicit cast is needed.
+
+Correct version:
+
+```java
+int a = 5;
+a = (int) (a + 2.5);
+
+System.out.println(a);
+```
+
+**Output:**
+```text
+7
+```
+
+🔥 Interview tip: `a += value` is not always interchangeable with `a = a + value`, especially when data types are involved.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 📌 10. Difference Between = and ==
+
+| `=` | `==` |
+|---|---|
+| Assignment operator | Equality comparison operator |
+| Assigns a value | Compares values for equality |
+| Example: `a = 10;` | Example: `a == 10` |
+| Does not produce a boolean comparison | Produces a boolean result in a comparison |
+
+### Example
+
+```java
+int a = 10;
+
+System.out.println(a == 10);
+```
+
+**Output:**
+```text
+true
+```
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 📌 11. Complete Java Program
+
+```java
+public class AssignmentOperators {
+    public static void main(String[] args) {
+
+        int a = 10;
+        System.out.println("Initial value: " + a);
+
+        a += 5;
+        System.out.println("After += : " + a);
+
+        a -= 3;
+        System.out.println("After -= : " + a);
+
+        a *= 2;
+        System.out.println("After *= : " + a);
+
+        a /= 4;
+        System.out.println("After /= : " + a);
+
+        a %= 3;
+        System.out.println("After %= : " + a);
+    }
+}
+```
+
+### Output
+
+```text
+Initial value: 10
+After += : 15
+After -= : 12
+After *= : 24
+After /= : 6
+After %= : 0
+```
+
+### Dry Run Table
+
+| Operation | Calculation | Final Value |
+|---|---|---:|
+| Initial | — | 10 |
+| `a += 5` | 10 + 5 | 15 |
+| `a -= 3` | 15 - 3 | 12 |
+| `a *= 2` | 12 × 2 | 24 |
+| `a /= 4` | 24 ÷ 4 | 6 |
+| `a %= 3` | 6 remainder 3 | 0 |
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 📌 12. Common Mistakes to Avoid ⚠️
+
+❌ **Mistake 1: Confusing `=` with `==`**
+
+```java
+int a = 10;
+System.out.println(a == 10);
+```
+
+Remember: `=` assigns; `==` compares.
+
+❌ **Mistake 2: Expecting decimal output from integer division**
+
+```java
+int a = 10;
+a /= 4;
+
+System.out.println(a);
+```
+
+Output: `2`, not `2.5`.
+
+❌ **Mistake 3: Dividing an integer by zero**
+
+```java
+int a = 10;
+a /= 0;
+```
+
+This throws `ArithmeticException` at runtime.
+
+❌ **Mistake 4: Forgetting compound assignment type conversion**
+
+```java
+int a = 5;
+a += 2.5;
+```
+
+Output: `7`, because the result is converted back to `int`.
+
+❌ **Mistake 5: Thinking `%` gives the percentage**
+
+In Java, `%` gives the remainder, not the percentage.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 🎯 13. Interview Questions and Answers
+
+**Q1. What is an assignment operator?**
+
+An assignment operator assigns a value to a variable or updates its value.
+
+**Q2. What is the difference between `=` and `+=`?**
+
+`=` assigns a value. `+=` adds a value to the existing variable and stores the result.
+
+**Q3. What is the output?**
+
+```java
+int a = 10;
+a += 5;
+a *= 2;
+
+System.out.println(a);
+```
+
+**Answer:** `30`
+
+Explanation: 10 + 5 = 15, then 15 × 2 = 30.
+
+**Q4. What is the output?**
+
+```java
+int a = 17;
+a %= 5;
+
+System.out.println(a);
+```
+
+**Answer:** `2`
+
+**Q5. What happens when an `int` variable uses `/=` with a decimal result?**
+
+The result is converted back to `int`, so the fractional part is discarded.
+
+**Q6. Why does `a += 2.5` work when `a` is an `int`, but `a = a + 2.5` does not?**
+
+Compound assignment includes an implicit conversion back to the variable's type. Ordinary assignment does not automatically narrow a `double` to an `int`.
+
+**Q7. What exception occurs when an integer is divided by zero?**
+
+`ArithmeticException`.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 🧠 14. Easy Memory Trick
+
+Remember the five compound assignment operators like this:
+
+- `+=` → Add
+- `-=` → Subtract
+- `*=` → Multiply
+- `/=` → Divide
+- `%=` → Remainder
+
+💡 **One-line formula:**
+
+`variable operator= value`
+
+means perform that operation using the existing value, then store the result back in the variable.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## ⚡ 15. Quick Revision
+
+✅ `=` assigns a value.
+
+✅ `+=` adds and assigns.
+
+✅ `-=` subtracts and assigns.
+
+✅ `*=` multiplies and assigns.
+
+✅ `/=` divides and assigns.
+
+✅ `%=` calculates the remainder and assigns.
+
+✅ Integer division discards the fractional part.
+
+✅ Compound assignment can perform implicit narrowing conversion.
+
+✅ Division by integer zero throws `ArithmeticException`.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 🏆 TOPIC COMPLETED — ADD TO GITHUB NOTES
+
+**Topic:** Java Operators — 05: Assignment Operators
+
+**Status:** COMPLETED ✅
+
+**Next topic:** Java Operators — 06: Ternary Operator (`?:`), explained separately with detailed examples, outputs, dry runs, and interview questions.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
