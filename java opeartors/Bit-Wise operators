@@ -1,0 +1,574 @@
+
+# 🚀 JAVA OPERATORS — 07: BITWISE OPERATORS
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 📌 1. What Are Bitwise Operators?
+
+Bitwise operators perform operations on the individual **bits** of integer values.
+
+A bit is a binary digit: `0` or `1`.
+
+Computers represent numbers using binary, which uses only `0` and `1`.
+
+### Example: Decimal to Binary
+
+| Decimal | Binary |
+|---:|---|
+| 1 | `0001` |
+| 2 | `0010` |
+| 3 | `0011` |
+| 4 | `0100` |
+| 5 | `0101` |
+| 6 | `0110` |
+| 7 | `0111` |
+| 8 | `1000` |
+
+For simple examples, we will use 4-bit binary numbers to make the calculations easy. Java `int` values actually use 32 bits.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 📌 2. Types of Bitwise Operators
+
+| Operator | Name | Meaning |
+|---|---|---|
+| `&` | Bitwise AND | Result bit is `1` when both bits are `1` |
+| `|` | Bitwise OR | Result bit is `1` when at least one bit is `1` |
+| `^` | Bitwise XOR | Result bit is `1` when the bits are different |
+| `~` | Bitwise NOT | Flips every bit: `0` becomes `1`, and `1` becomes `0` |
+
+🧠 Memory trick:
+
+- `&` → Both
+- `|` → Either or both
+- `^` → Different
+- `~` → Reverse each bit
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 🔹 3. Bitwise AND (&)
+
+The `&` operator compares corresponding bits of two integers.
+
+The result is `1` only when **both bits are `1`**.
+
+### AND Truth Table
+
+| First Bit | Second Bit | Result |
+|---:|---:|---:|
+| 0 | 0 | 0 |
+| 0 | 1 | 0 |
+| 1 | 0 | 0 |
+| 1 | 1 | 1 |
+
+### Example 1: Binary Calculation
+
+```text
+  0101   (5)
+& 0011   (3)
+------
+  0001   (1)
+```
+
+Explanation:
+
+| First Bit | Second Bit | Result |
+|---:|---:|---:|
+| 0 | 0 | 0 |
+| 1 | 0 | 0 |
+| 0 | 1 | 0 |
+| 1 | 1 | 1 |
+
+Therefore, `5 & 3 = 1`.
+
+### Example 2: Java Program
+
+```java
+public class BitwiseAnd {
+    public static void main(String[] args) {
+        int a = 5;
+        int b = 3;
+
+        System.out.println(a & b);
+    }
+}
+```
+
+**Output:**
+
+```text
+1
+```
+
+### Example 3
+
+```java
+System.out.println(6 & 3);
+```
+
+Binary calculation:
+
+```text
+  0110   (6)
+& 0011   (3)
+------
+  0010   (2)
+```
+
+**Output:** `2`
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 🔹 4. Bitwise OR (|)
+
+The `|` operator compares corresponding bits.
+
+The result is `1` when **at least one of the bits is `1`**.
+
+### OR Truth Table
+
+| First Bit | Second Bit | Result |
+|---:|---:|---:|
+| 0 | 0 | 0 |
+| 0 | 1 | 1 |
+| 1 | 0 | 1 |
+| 1 | 1 | 1 |
+
+### Example 1: Binary Calculation
+
+```text
+  0101   (5)
+| 0011   (3)
+------
+  0111   (7)
+```
+
+Therefore, `5 | 3 = 7`.
+
+### Example 2: Java Program
+
+```java
+public class BitwiseOr {
+    public static void main(String[] args) {
+        int a = 5;
+        int b = 3;
+
+        System.out.println(a | b);
+    }
+}
+```
+
+**Output:**
+
+```text
+7
+```
+
+### Example 3
+
+```java
+System.out.println(8 | 2);
+```
+
+Binary calculation:
+
+```text
+  1000   (8)
+| 0010   (2)
+------
+  1010   (10)
+```
+
+**Output:** `10`
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 🔹 5. Bitwise XOR (^)
+
+XOR means **exclusive OR**.
+
+The `^` operator produces `1` when the two bits are different. If both bits are the same, it produces `0`.
+
+### XOR Truth Table
+
+| First Bit | Second Bit | Result |
+|---:|---:|---:|
+| 0 | 0 | 0 |
+| 0 | 1 | 1 |
+| 1 | 0 | 1 |
+| 1 | 1 | 0 |
+
+🧠 Memory trick: **Different = 1; Same = 0.**
+
+### Example 1: Binary Calculation
+
+```text
+  0101   (5)
+^ 0011   (3)
+------
+  0110   (6)
+```
+
+Therefore, `5 ^ 3 = 6`.
+
+### Example 2: Java Program
+
+```java
+public class BitwiseXor {
+    public static void main(String[] args) {
+        int a = 5;
+        int b = 3;
+
+        System.out.println(a ^ b);
+    }
+}
+```
+
+**Output:**
+
+```text
+6
+```
+
+### Example 3
+
+```java
+System.out.println(7 ^ 7);
+```
+
+Both numbers have identical binary bits, so every result bit is `0`.
+
+**Output:** `0`
+
+### Another Important Property
+
+```java
+System.out.println(5 ^ 0);
+```
+
+XOR with zero leaves the bits unchanged.
+
+**Output:** `5`
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 🔹 6. Bitwise NOT (~)
+
+The `~` operator flips every bit of an integer.
+
+- `0` becomes `1`.
+- `1` becomes `0`.
+
+### Example: Flipping Bits
+
+Using 4 bits only to illustrate the operation:
+
+```text
+Original:  0101
+Flipped:   1010
+```
+
+However, Java's `int` uses 32-bit signed two's-complement representation. Therefore, the actual Java result must be calculated using all 32 bits.
+
+### Example 1: Java Program
+
+```java
+public class BitwiseNot {
+    public static void main(String[] args) {
+        int a = 5;
+
+        System.out.println(~a);
+    }
+}
+```
+
+**Output:**
+
+```text
+-6
+```
+
+### Why Is the Output -6?
+
+For a Java `int`, the useful formula is:
+
+\[
+\boxed{\sim a = -a - 1}
+\]
+
+For `a = 5`:
+
+\[
+\sim 5 = -5 - 1 = -6
+\]
+
+Therefore, `~5` gives `-6`.
+
+### More Examples
+
+| Expression | Calculation | Output |
+|---|---|---:|
+| `~0` | `-0 - 1` | -1 |
+| `~1` | `-1 - 1` | -2 |
+| `~5` | `-5 - 1` | -6 |
+| `~10` | `-10 - 1` | -11 |
+| `~-1` | `-(-1) - 1` | 0 |
+
+⚠️ Important: Do not calculate `~5` by flipping only the four bits shown in the simplified example. Java uses all 32 bits for an `int`.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 📌 7. Complete Java Program
+
+This program demonstrates all four bitwise operators.
+
+```java
+public class BitwiseOperators {
+    public static void main(String[] args) {
+        int a = 5;
+        int b = 3;
+
+        System.out.println("AND: " + (a & b));
+        System.out.println("OR: " + (a | b));
+        System.out.println("XOR: " + (a ^ b));
+        System.out.println("NOT: " + (~a));
+    }
+}
+```
+
+### Output
+
+```text
+AND: 1
+OR: 7
+XOR: 6
+NOT: -6
+```
+
+### Dry Run Table
+
+| Expression | Binary Operation | Result |
+|---|---|---:|
+| `5 & 3` | `0101 AND 0011` | 1 |
+| `5 | 3` | `0101 OR 0011` | 7 |
+| `5 ^ 3` | `0101 XOR 0011` | 6 |
+| `~5` | Flip all 32 bits | -6 |
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 📌 8. Difference Between Bitwise & and Logical &&
+
+This is an important Java interview question.
+
+### Bitwise AND (&)
+
+```java
+int a = 5;
+int b = 3;
+
+System.out.println(a & b);
+```
+
+**Output:** `1`
+
+It performs an operation on the bits of integer values.
+
+### Logical AND (&&)
+
+```java
+int age = 20;
+
+System.out.println(age >= 18 && age <= 60);
+```
+
+**Output:** `true`
+
+It combines boolean conditions.
+
+### Main Differences
+
+| Bitwise `&` | Logical `&&` |
+|---|---|
+| Works on integer bits | Works on boolean conditions |
+| Can also operate on booleans | Operates on booleans |
+| Does not short-circuit boolean evaluation | Short-circuits when the first condition is `false` |
+
+Java also allows `&` with booleans. In that case, both operands are evaluated, unlike `&&`.
+
+Example:
+
+```java
+int a = 5;
+
+System.out.println((a > 0) & (a < 10));
+```
+
+**Output:** `true`
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 📌 9. Real-Life Uses of Bitwise Operators
+
+### ✅ Use 1: Checking Whether a Number Is Odd or Even
+
+```java
+int number = 7;
+
+if ((number & 1) == 0) {
+    System.out.println("Even");
+} else {
+    System.out.println("Odd");
+}
+```
+
+**Output:**
+
+```text
+Odd
+```
+
+Explanation:
+- Even numbers have a last binary bit of `0`.
+- Odd numbers have a last binary bit of `1`.
+- `number & 1` checks that last bit.
+
+This is a common bit-manipulation technique.
+
+### ✅ Use 2: XOR with the Same Number
+
+```java
+int a = 12;
+
+System.out.println(a ^ a);
+```
+
+**Output:** `0`
+
+A number XORed with itself always produces zero.
+
+### ✅ Use 3: Bit Masks
+
+Bitwise AND is often used to check whether a particular bit is set.
+
+For example:
+
+```java
+int number = 10;       // Binary: 1010
+int mask = 2;          // Binary: 0010
+
+System.out.println((number & mask) != 0);
+```
+
+**Output:**
+
+```text
+true
+```
+
+The mask selects the second-lowest bit, which is set in `1010`.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 📌 10. Common Mistakes to Avoid ⚠️
+
+❌ **Mistake 1: Confusing `&` with `&&`**
+
+- `&` performs bitwise operations on integers.
+- `&&` combines boolean conditions and short-circuits.
+
+❌ **Mistake 2: Thinking XOR means OR**
+
+- OR gives `1` when at least one bit is `1`.
+- XOR gives `1` only when the bits are different.
+
+❌ **Mistake 3: Thinking `~5` gives 10**
+
+For Java's 32-bit `int`, `~5` gives `-6`, not `10`.
+
+❌ **Mistake 4: Forgetting operator precedence**
+
+Use parentheses to make calculations clear.
+
+```java
+System.out.println((5 & 3) == 1);
+```
+
+**Output:** `true`
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 📌 11. Interview Questions and Answers
+
+**Q1. What are bitwise operators?**
+
+They perform operations on individual bits of integer values.
+
+**Q2. What is the difference between AND and OR?**
+
+AND produces `1` only when both bits are `1`. OR produces `1` when at least one bit is `1`.
+
+**Q3. What is XOR?**
+
+XOR produces `1` when the corresponding bits are different.
+
+**Q4. What is the output of `5 & 3`?**
+
+Answer: `1`.
+
+**Q5. What is the output of `5 | 3`?**
+
+Answer: `7`.
+
+**Q6. What is the output of `5 ^ 3`?**
+
+Answer: `6`.
+
+**Q7. What is the output of `~5` in Java?**
+
+Answer: `-6`.
+
+**Q8. What is the formula for bitwise NOT on an integer?**
+
+For Java's signed integer representation:
+
+`~a = -a - 1`
+
+**Q9. What is the output of `9 ^ 9`?**
+
+Answer: `0`.
+
+**Q10. Can `&` and `|` be used with booleans?**
+
+Yes. They evaluate both boolean operands, unlike the short-circuit operators `&&` and `||`.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 🧠 12. Quick Memory Trick
+
+| Operator | Remember |
+|---|---|
+| `&` | Both must be 1 |
+| `|` | At least one must be 1 |
+| `^` | Different bits produce 1 |
+| `~` | Flip every bit |
+
+### Final Example
+
+For `a = 5` and `b = 3`:
+
+- `a & b` → `1`
+- `a | b` → `7`
+- `a ^ b` → `6`
+- `~a` → `-6`
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 🏆 TOPIC COMPLETED — ADD TO GITHUB NOTES
+
+**Topic:** Java Operators — 07: Bitwise Operators
+
+**Status:** COMPLETED ✅
+
+**Next topic:** Java Operators — 08: Shift Operators (`<<`, `>>`, `>>>`), including left shift, signed right shift, unsigned right shift, binary dry runs, negative numbers, and interview questions.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
