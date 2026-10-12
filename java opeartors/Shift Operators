@@ -1,0 +1,409 @@
+
+# 🚀 JAVA OPERATORS — 08: SHIFT OPERATORS
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 📌 1. What Are Shift Operators?
+
+Shift operators move the bits of an integer to the left or right.
+
+Java has three shift operators:
+
+| Operator | Name | Main purpose |
+|---|---|---|
+| `<<` | Left shift | Moves bits to the left |
+| `>>` | Signed right shift | Moves bits to the right and preserves the sign |
+| `>>>` | Unsigned right shift | Moves bits to the right and fills with zeros |
+
+💡 Remember:
+
+- `<<` → Left
+- `>>` → Right, preserve sign
+- `>>>` → Right, fill with zeros
+
+Java `int` values use 32 bits. In the examples below, short binary representations are used to make the movement easier to understand.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 🔹 2. Left Shift Operator (<<)
+
+The `<<` operator shifts bits to the left.
+
+The empty positions on the right are filled with zeros. Bits that move beyond the left boundary are discarded.
+
+### Example 1: `5 << 1`
+
+Decimal `5` in binary is:
+
+```text
+00000101
+```
+
+Shift the bits one position to the left:
+
+```text
+Before: 00000101  (5)
+After:  00001010  (10)
+```
+
+Therefore:
+
+```java
+System.out.println(5 << 1);
+```
+
+**Output:**
+```text
+10
+```
+
+### Example 2: `5 << 2`
+
+Move the bits two positions to the left:
+
+```text
+Before: 00000101  (5)
+After:  00010100  (20)
+```
+
+Java code:
+
+```java
+System.out.println(5 << 2);
+```
+
+**Output:**
+```text
+20
+```
+
+### Important Rule
+
+For ordinary positive integers, when the result does not overflow:
+
+- `a << 1` is equivalent to multiplying by 2.
+- `a << 2` is equivalent to multiplying by 4.
+- `a << 3` is equivalent to multiplying by 8.
+
+Mathematically:
+
+\[
+a \ll n \approx a \times 2^n
+\]
+
+⚠️ This multiplication shortcut must be used carefully because Java's `int` has a fixed width and overflow can occur.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 🔹 3. Signed Right Shift Operator (>>)
+
+The `>>` operator moves bits to the right.
+
+For a positive integer, the empty positions on the left are filled with zeros.
+
+For a negative integer, the empty positions on the left are filled with ones to preserve the sign bit.
+
+### Example 1: `12 >> 1`
+
+Decimal `12` in binary:
+
+```text
+00001100
+```
+
+Move every bit one position to the right:
+
+```text
+Before: 00001100  (12)
+After:  00000110  (6)
+```
+
+Java code:
+
+```java
+System.out.println(12 >> 1);
+```
+
+**Output:**
+```text
+6
+```
+
+### Example 2: `20 >> 2`
+
+Decimal `20` in binary:
+
+```text
+00010100
+```
+
+Shift right by two positions:
+
+```text
+Before: 00010100  (20)
+After:  00000101  (5)
+```
+
+Java code:
+
+```java
+System.out.println(20 >> 2);
+```
+
+**Output:**
+```text
+5
+```
+
+### Important Rule
+
+For positive integers, when there is no overflow or other special case:
+
+- `a >> 1` behaves like integer division by 2.
+- `a >> 2` behaves like integer division by 4.
+- `a >> 3` behaves like integer division by 8.
+
+For negative integers, signed right shift rounds toward negative infinity, which differs from Java integer division's truncation toward zero.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 🔹 4. Unsigned Right Shift Operator (>>>)
+
+The `>>>` operator shifts bits to the right and fills the empty positions on the left with zeros, regardless of whether the number is positive or negative.
+
+### Example 1: Positive Number
+
+```java
+System.out.println(16 >>> 2);
+```
+
+**Output:**
+```text
+4
+```
+
+For positive numbers, `>>` and `>>>` usually produce the same result.
+
+### Example 2: Negative Number
+
+```java
+System.out.println(-8 >> 1);
+System.out.println(-8 >>> 1);
+```
+
+**Output:**
+```text
+-4
+2147483644
+```
+
+Why are the results different?
+
+Java represents `int` values using 32-bit two's-complement representation.
+
+For `-8`:
+
+- `>> 1` preserves the sign by filling the leftmost position with `1`, so the result is `-4`.
+- `>>> 1` fills the leftmost position with `0`, treating the resulting bit pattern as a nonnegative integer, so the result is `2147483644`.
+
+🧠 Key point: `>>>` does not preserve the sign of a negative number.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 📌 5. Understanding Bit Movement
+
+Use this example to understand the direction of movement.
+
+### Left Shift: `3 << 1`
+
+```text
+3 = 00000011
+
+Shift left:
+    00000011
+  → 00000110
+
+Result = 6
+```
+
+### Right Shift: `12 >> 1`
+
+```text
+12 = 00001100
+
+Shift right:
+    00001100
+  → 00000110
+
+Result = 6
+```
+
+💡 Easy trick:
+
+- Left shift: bits move toward the left; zeros enter from the right.
+- Right shift: bits move toward the right; the left side is filled according to the operator.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 📌 6. Complete Java Program
+
+```java
+public class ShiftOperators {
+    public static void main(String[] args) {
+
+        System.out.println("Left shift:");
+        System.out.println(5 << 1);
+        System.out.println(5 << 2);
+
+        System.out.println("Signed right shift:");
+        System.out.println(12 >> 1);
+        System.out.println(20 >> 2);
+
+        System.out.println("Unsigned right shift:");
+        System.out.println(16 >>> 2);
+
+        System.out.println("Negative number:");
+        System.out.println(-8 >> 1);
+        System.out.println(-8 >>> 1);
+    }
+}
+```
+
+### Output
+
+```text
+Left shift:
+10
+20
+Signed right shift:
+6
+5
+Unsigned right shift:
+4
+Negative number:
+-4
+2147483644
+```
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 📌 7. Dry Run Table
+
+| Expression | Explanation | Output |
+|---|---|---:|
+| `5 << 1` | Multiply by 2 in this case | 10 |
+| `5 << 2` | Multiply by 4 in this case | 20 |
+| `12 >> 1` | Signed right shift | 6 |
+| `20 >> 2` | Signed right shift by 2 | 5 |
+| `16 >>> 2` | Unsigned right shift | 4 |
+| `-8 >> 1` | Preserve the negative sign | -4 |
+| `-8 >>> 1` | Fill left positions with zeros | 2147483644 |
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 📌 8. Difference Between >> and >>>
+
+| `>>` | `>>>` |
+|---|---|
+| Signed right shift | Unsigned right shift |
+| Preserves the sign | Fills empty left positions with zeros |
+| Negative values remain negative after a right shift | A negative value shifted right can become a large positive value |
+| For positive values, fills left positions with zeros | Always fills left positions with zeros |
+
+Example:
+
+```java
+System.out.println(-8 >> 1);
+System.out.println(-8 >>> 1);
+```
+
+Output:
+
+```text
+-4
+2147483644
+```
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 📌 9. Important Rules and Common Mistakes ⚠️
+
+✅ Shift operators work with integer types such as `byte`, `short`, `char`, `int`, and `long`. Smaller integer types are promoted to `int` before the shift operation.
+
+✅ For `int`, only the lowest 5 bits of the shift distance are used.
+
+✅ For `long`, only the lowest 6 bits of the shift distance are used.
+
+❌ Do not assume every left shift is safe multiplication. Overflow can change the result.
+
+❌ Do not assume `>>` and `>>>` always produce the same result. They differ for negative numbers.
+
+❌ Do not think `>>>` means division by 2. For negative numbers, its zero-filling behavior can produce a very large positive value.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 📌 10. Interview Questions and Answers
+
+**Q1. How many shift operators are available in Java?**
+
+Three: `<<`, `>>`, and `>>>`.
+
+**Q2. What is the output of `10 << 1`?**
+
+Answer: `20`.
+
+**Q3. What is the output of `16 >> 2`?**
+
+Answer: `4`.
+
+**Q4. What is the difference between `>>` and `>>>`?**
+
+`>>` preserves the sign; `>>>` fills the empty left positions with zeros.
+
+**Q5. What is the output of `-8 >> 1`?**
+
+Answer: `-4`.
+
+**Q6. What is the output of `-8 >>> 1`?**
+
+Answer: `2147483644`.
+
+**Q7. What is the result of `1 << 3`?**
+
+Answer: `8`.
+
+**Q8. Why can a left shift overflow?**
+
+Because Java integer types have a fixed number of bits. Bits shifted beyond the available width are discarded.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 🧠 11. Quick Memory Trick
+
+| Operator | Memory trick |
+|---|---|
+| `<<` | Left shift; zeros enter from the right |
+| `>>` | Right shift; preserve the sign |
+| `>>>` | Right shift; zeros enter from the left |
+
+### Remember These Examples
+
+```java
+5 << 1    // 10
+12 >> 1   // 6
+16 >>> 2  // 4
+-8 >> 1   // -4
+-8 >>> 1  // 2147483644
+```
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 🏆 TOPIC COMPLETED — ADD TO GITHUB NOTES
+
+**Topic:** Java Operators — 08: Shift Operators
+
+**Status:** COMPLETED ✅
+
+**Next topic:** Java Operators — 09: `instanceof` Operator, with object examples, inheritance, `null`, outputs, and interview questions.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
