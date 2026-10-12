@@ -1,0 +1,565 @@
+
+# 🚀 JAVA OPERATORS — 10: OPERATOR PRECEDENCE AND ASSOCIATIVITY
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 📌 1. What Is Operator Precedence?
+
+**Operator precedence** determines which operator is evaluated first when an expression contains multiple operators.
+
+### Example
+
+```java
+int result = 10 + 5 * 2;
+System.out.println(result);
+```
+
+**Output:**
+```text
+20
+```
+
+### Why?
+
+Multiplication (`*`) has higher precedence than addition (`+`).
+
+Step 1: `5 * 2 = 10`
+
+Step 2: `10 + 10 = 20`
+
+Therefore, the answer is `20`, not `30`.
+
+🧠 Memory trick: **Precedence = Priority.**
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 📌 2. What Is Associativity?
+
+**Associativity** determines the evaluation direction when operators have the same precedence.
+
+For example, multiplication and division have the same precedence and are evaluated from left to right.
+
+### Example 1
+
+```java
+int result = 20 / 5 * 2;
+System.out.println(result);
+```
+
+**Output:**
+```text
+8
+```
+
+### Dry Run
+
+1. `20 / 5 = 4`
+2. `4 * 2 = 8`
+
+Java evaluates from left to right because `/` and `*` have the same precedence.
+
+### Example 2: Assignment
+
+```java
+int a, b, c;
+
+a = b = c = 10;
+
+System.out.println(a);
+System.out.println(b);
+System.out.println(c);
+```
+
+**Output:**
+```text
+10
+10
+10
+```
+
+Assignment operators associate from **right to left**.
+
+The expression behaves like:
+
+```java
+a = (b = (c = 10));
+```
+
+🧠 Memory trick:
+
+- **Precedence** → Which operator first?
+- **Associativity** → Which direction?
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 📌 3. Java Operator Precedence Table
+
+The following table lists common Java operators from higher precedence to lower precedence.
+
+| Priority | Operators | Category | Associativity |
+|---:|---|---|---|
+| 1 | `()` `[]` `.` | Parentheses, array access, member access | Left to right for chained access |
+| 2 | `expr++` `expr--` | Postfix | Left to right |
+| 3 | `++expr` `--expr` `+` `-` `!` `~` `(type)` | Unary and cast | Right to left |
+| 4 | `*` `/` `%` | Multiplicative | Left to right |
+| 5 | `+` `-` | Additive | Left to right |
+| 6 | `<<` `>>` `>>>` | Shift | Left to right |
+| 7 | `<` `>` `<=` `>=` `instanceof` | Relational and type check | Left to right |
+| 8 | `==` `!=` | Equality | Left to right |
+| 9 | `&` | Bitwise AND | Left to right |
+| 10 | `^` | Bitwise XOR | Left to right |
+| 11 | `|` | Bitwise OR | Left to right |
+| 12 | `&&` | Logical AND | Left to right |
+| 13 | `||` | Logical OR | Left to right |
+| 14 | `?:` | Ternary | Right to left |
+| 15 | `=` `+=` `-=` `*=` `/=` `%=` and other assignments | Assignment | Right to left |
+
+⚠️ Important:
+- Parentheses can make the intended order clear.
+- The table shows precedence, not necessarily the order in which every operand is evaluated.
+- Java's `&&` and `||` short-circuit, so the second operand may not be evaluated.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 📌 4. Parentheses Have Higher Priority
+
+Parentheses let you control the order of evaluation.
+
+### Example 1: Without Parentheses
+
+```java
+int result = 10 + 5 * 2;
+System.out.println(result);
+```
+
+**Output:**
+```text
+20
+```
+
+### Example 2: With Parentheses
+
+```java
+int result = (10 + 5) * 2;
+System.out.println(result);
+```
+
+**Output:**
+```text
+30
+```
+
+### Difference
+
+| Expression | Calculation | Result |
+|---|---|---:|
+| `10 + 5 * 2` | `10 + 10` | 20 |
+| `(10 + 5) * 2` | `15 * 2` | 30 |
+
+💡 Interview tip: Use parentheses to make complicated expressions easier to read.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 📌 5. Multiplication, Division, and Modulus
+
+The operators `*`, `/`, and `%` have the same precedence.
+
+They are evaluated from left to right.
+
+### Example
+
+```java
+int result = 20 / 3 * 2;
+System.out.println(result);
+```
+
+**Output:**
+```text
+12
+```
+
+### Dry Run
+
+Step 1: `20 / 3 = 6` because both values are integers.
+
+Step 2: `6 * 2 = 12`.
+
+Final result: `12`.
+
+⚠️ Do not calculate `20 / (3 * 2)` unless parentheses are present.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 📌 6. Addition and Subtraction
+
+The operators `+` and `-` have the same precedence and associate from left to right.
+
+### Example
+
+```java
+int result = 20 - 5 + 2;
+System.out.println(result);
+```
+
+**Output:**
+```text
+17
+```
+
+### Dry Run
+
+1. `20 - 5 = 15`
+2. `15 + 2 = 17`
+
+Remember: Addition does not automatically happen before subtraction. Operators at the same precedence level follow associativity.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 📌 7. Relational Operators vs Equality Operators
+
+Relational operators:
+
+`<`, `>`, `<=`, `>=`
+
+Equality operators:
+
+`==`, `!=`
+
+Relational operators have higher precedence than equality operators.
+
+### Example
+
+```java
+int a = 5;
+int b = 10;
+
+System.out.println(a < b == true);
+```
+
+**Output:**
+```text
+true
+```
+
+### Dry Run
+
+1. Evaluate `a < b` → `5 < 10` → `true`.
+2. Evaluate `true == true` → `true`.
+
+Therefore, the output is `true`.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 📌 8. Logical AND (&&) vs Logical OR (||)
+
+Logical AND (`&&`) has higher precedence than logical OR (`||`).
+
+### Example
+
+```java
+boolean result = true || false && false;
+System.out.println(result);
+```
+
+**Output:**
+```text
+true
+```
+
+### Dry Run
+
+1. Evaluate `false && false` → `false`.
+2. Evaluate `true || false` → `true`.
+
+Final result: `true`.
+
+### Another Example
+
+```java
+boolean result = false || true && false;
+System.out.println(result);
+```
+
+**Output:**
+```text
+false
+```
+
+Dry run:
+
+1. `true && false` → `false`.
+2. `false || false` → `false`.
+
+⚠️ Do not confuse operator precedence with short-circuit evaluation. Precedence determines grouping; short-circuiting determines whether an operand needs to be evaluated.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 📌 9. Unary Operators and Precedence
+
+Unary operators include:
+
+`++`, `--`, `!`, `~`, unary `+`, unary `-`
+
+### Example
+
+```java
+int a = 5;
+int result = -a + 10;
+
+System.out.println(result);
+```
+
+**Output:**
+```text
+5
+```
+
+### Dry Run
+
+1. Unary minus: `-a = -5`.
+2. Addition: `-5 + 10 = 5`.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 📌 10. Assignment Associativity
+
+Assignment operators associate from right to left.
+
+### Example
+
+```java
+int a, b, c;
+
+a = b = c = 5;
+
+System.out.println(a + b + c);
+```
+
+**Output:**
+```text
+15
+```
+
+### Explanation
+
+1. `c = 5`
+2. `b = c`
+3. `a = b`
+
+All three variables become `5`.
+
+⚠️ This does not mean every expression evaluates from right to left. Only operators with right-to-left associativity follow that grouping rule.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 📌 11. Increment Operators and Precedence
+
+Post-increment (`a++`) and pre-increment (`++a`) both increase the variable by one, but their expression values differ.
+
+### Example
+
+```java
+int a = 5;
+
+System.out.println(a++);
+System.out.println(a);
+```
+
+**Output:**
+```text
+5
+6
+```
+
+Explanation:
+- `a++` uses the old value in the expression.
+- Then `a` becomes `6`.
+
+### Pre-Increment Example
+
+```java
+int a = 5;
+
+System.out.println(++a);
+System.out.println(a);
+```
+
+**Output:**
+```text
+6
+6
+```
+
+Explanation:
+- `++a` increments first.
+- Then the expression uses the new value.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 📌 12. Tricky Interview Examples
+
+### Example 1
+
+```java
+System.out.println(2 + 3 * 4);
+```
+
+**Output:** `14`
+
+Explanation: `3 * 4 = 12`, then `2 + 12 = 14`.
+
+### Example 2
+
+```java
+System.out.println((2 + 3) * 4);
+```
+
+**Output:** `20`
+
+Explanation: Parentheses first, then multiplication.
+
+### Example 3
+
+```java
+System.out.println(10 - 4 - 2);
+```
+
+**Output:** `4`
+
+Explanation: Left to right: `10 - 4 = 6`, then `6 - 2 = 4`.
+
+### Example 4
+
+```java
+System.out.println(18 / 3 * 2);
+```
+
+**Output:** `12`
+
+Explanation: Left to right: `18 / 3 = 6`, then `6 * 2 = 12`.
+
+### Example 5
+
+```java
+System.out.println(5 > 3 && 8 < 10);
+```
+
+**Output:** `true`
+
+Both comparisons are true, so logical AND returns true.
+
+### Example 6
+
+```java
+System.out.println(5 + 2 > 10 || 4 < 8);
+```
+
+**Output:** `true`
+
+Explanation:
+
+1. `5 + 2` → `7`.
+2. `7 > 10` → `false`.
+3. `4 < 8` → `true`.
+4. `false || true` → `true`.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 📌 13. Common Mistakes to Avoid ⚠️
+
+❌ **Mistake 1: Assuming expressions are evaluated strictly from left to right.**
+
+Some operators, such as assignment and unary operators, have right-to-left associativity.
+
+❌ **Mistake 2: Forgetting integer division.**
+
+```java
+System.out.println(10 / 4);
+```
+
+Output: `2`, not `2.5`.
+
+❌ **Mistake 3: Ignoring parentheses.**
+
+`10 + 5 * 2` gives `20`, while `(10 + 5) * 2` gives `30`.
+
+❌ **Mistake 4: Confusing precedence with associativity.**
+
+- Precedence decides which priority level comes first.
+- Associativity decides grouping when operators share a precedence level.
+
+❌ **Mistake 5: Assuming precedence controls all operand evaluation.**
+
+Java also has evaluation rules, including short-circuiting for `&&` and `||`.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 📌 14. Interview Questions and Answers
+
+**Q1. What is operator precedence?**
+
+It determines which operator is grouped first in an expression.
+
+**Q2. What is associativity?**
+
+It determines the grouping direction for operators with the same precedence.
+
+**Q3. What is the output of `10 + 5 * 2`?**
+
+Answer: `20`.
+
+**Q4. What is the output of `(10 + 5) * 2`?**
+
+Answer: `30`.
+
+**Q5. What is the associativity of assignment operators?**
+
+Right to left.
+
+**Q6. Which has higher precedence: `&&` or `||`?**
+
+`&&` has higher precedence.
+
+**Q7. Which has higher precedence: `<` or `==`?**
+
+`<` has higher precedence.
+
+**Q8. Which has higher precedence: `*` or `+`?**
+
+`*` has higher precedence.
+
+**Q9. What is the result of `20 / 5 * 2`?**
+
+Answer: `8`, because division and multiplication have equal precedence and are grouped from left to right.
+
+**Q10. How can we make an expression easier to understand?**
+
+Use parentheses to clearly show the intended grouping.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 🧠 15. Quick Memory Trick
+
+Remember these important rules:
+
+1. Parentheses first.
+2. Unary operators before multiplication.
+3. Multiplication, division, and remainder before addition and subtraction.
+4. Arithmetic before relational comparisons.
+5. Relational operators before equality operators.
+6. `&&` before `||`.
+7. Ternary operator after logical OR.
+8. Assignment operators near the bottom of the precedence table.
+9. Use parentheses whenever the intended order is unclear.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 🏆 TOPIC COMPLETED — ADD TO GITHUB NOTES
+
+**Topic:** Java Operators — 10: Operator Precedence and Associativity
+
+**Status:** COMPLETED ✅
+
+**Next step:** Java Operators revision and interview practice. Review all ten operator topics before moving to the next Java concept.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
